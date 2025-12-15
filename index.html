@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday Samson</title>
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #ffd6e8, #fff);
+  font-family: 'Arial', sans-serif;
+  overflow: hidden;
+}
+
+.cake-container {
+  animation: pop 1.5s ease-out;
+}
+
+@keyframes pop {
+  from { transform: scale(0); }
+  to { transform: scale(1); }
+}
+
+.cake {
+  width: 220px;
+  height: 140px;
+  background: #f7a1c4;
+  border-radius: 12px;
+  position: relative;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.cake::before {
+  content: "";
+  position: absolute;
+  top: -35px;
+  left: 40px;
+  width: 140px;
+  height: 35px;
+  background: #ffd1dc;
+  border-radius: 12px 12px 0 0;
+}
+
+.number {
+  position: absolute;
+  top: -80px;
+  left: 70px;
+  font-size: 52px;
+  font-weight: bold;
+  color: #2c2c2c;
+}
+
+.text {
+  margin-top: 40px;
+  font-size: 26px;
+  font-weight: bold;
+  color: #333;
+}
+
+.confetti {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background: red;
+  top: -10px;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  to { transform: translateY(110vh) rotate(360deg); }
+}
+</style>
+</head>
+
+<body onclick="playMusic()">
+
+<div class="cake-container">
+  <div class="number">20 🎂</div>
+  <div class="cake"></div>
+</div>
+
+<div class="text">Happy birthday my Samson</div>
+
+<audio id="music" loop>
+  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_1a6b1f7c8a.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function playMusic() {
+  document.getElementById("music").play();
+}
+
+// confetti
+for (let i = 0; i < 80; i++) {
+  let confetti = document.createElement("div");
+  confetti.className = "confetti";
+  confetti.style.left = Math.random() * 100 + "vw";
+  confetti.style.background =
+    hsl(${Math.random() * 360}, 100%, 50%);
+  confetti.style.animationDuration =
+    2 + Math.random() * 3 + "s";
+  document.body.appendChild(confetti);
+}
+</script>
+
+</body>
+</html>
